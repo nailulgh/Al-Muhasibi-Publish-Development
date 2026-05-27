@@ -16,10 +16,10 @@ export function Footer() {
                     <div>
                         <h3 className="footer-heading text-white font-heading font-bold text-lg mb-6">Menu Cepat</h3>
                         <ul className="space-y-3 text-sm">
-                            <li><Link href="/" className="footer-link hover:text-[var(--accent-olive)] transition-all">Beranda</Link></li>
-                            <li><Link href="/profile" className="footer-link hover:text-[var(--accent-olive)] transition-all">Profil</Link></li>
-                            <li><Link href="/galeri" className="footer-link hover:text-[var(--accent-olive)] transition-all">Galeri</Link></li>
-                            <li><Link href="/jadwal" className="footer-link hover:text-[var(--accent-olive)] transition-all">Jadwal</Link></li>
+                            <li><Link href="/" className="footer-link hover:text-[var(--accent-olive)] transition-all">Beranda Asrama</Link></li>
+                            <li><Link href="/profile" className="footer-link hover:text-[var(--accent-olive)] transition-all">Profil Al Muhasibi</Link></li>
+                            <li><Link href="/galeri" className="footer-link hover:text-[var(--accent-olive)] transition-all">Galeri Kegiatan</Link></li>
+                            <li><Link href="/jadwal" className="footer-link hover:text-[var(--accent-olive)] transition-all">Jadwal Harian</Link></li>
                             <li><Link href="#kontak" className="footer-link hover:text-[var(--accent-olive)] transition-all">Kontak</Link></li>
                         </ul>
                     </div>

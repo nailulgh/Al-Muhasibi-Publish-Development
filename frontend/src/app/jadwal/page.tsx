@@ -8,10 +8,10 @@ import type { Jadwal } from 'shared/types/schedule'
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-    title: 'Jadwal Kegiatan',
-    description: 'Jadwal harian dan mingguan kegiatan mahasantri Asrama Al Muhasibi.',
+    title: 'Jadwal Harian Mahasantri Al Muhasibi',
+    description: 'Jadwal kegiatan harian mahasantri Mabna Al Muhasibi UIN Maliki Malang — sholat berjamaah, ngaji, kajian, dan kegiatan asrama.',
     alternates: {
-        canonical: '/jadwal',
+        canonical: 'https://al-muhasibi.vercel.app/jadwal',
     },
 }
 
@@ -35,9 +35,31 @@ async function getSchedules() {
 export default async function JadwalPage() {
     const schedules = await getSchedules()
 
+    const breadcrumbJsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+            {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Beranda',
+                item: 'https://al-muhasibi.vercel.app',
+            },
+            {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Jadwal Harian',
+                item: 'https://al-muhasibi.vercel.app/jadwal',
+            },
+        ],
+    }
+
     return (
-        <Suspense fallback={<JadwalSkeleton />}>
-            <JadwalClient initialData={schedules} />
-        </Suspense>
+        <>
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+            <Suspense fallback={<JadwalSkeleton />}>
+                <JadwalClient initialData={schedules} />
+            </Suspense>
+        </>
     )
 }

@@ -7,15 +7,15 @@ const HomeCarousel = dynamic(() => import('@/components/HomeCarousel'), {
 });
 
 const ProgramsSection = dynamic(() => import('@/components/sections/ProgramsSection'), {
-  loading: () => <div className="h-96 animate-pulse bg-gray-100 rounded-xl" />,
+  loading: () => <div className="min-h-[500px] animate-pulse bg-gray-100 rounded-xl w-full" />,
 });
 
 const ProfileSection = dynamic(() => import('@/components/sections/ProfileSection'), {
-  loading: () => <div className="h-96 animate-pulse bg-gray-100 rounded-xl" />,
+  loading: () => <div className="min-h-[500px] animate-pulse bg-gray-100 rounded-xl w-full" />,
 });
 
 const GallerySection = dynamic(() => import('@/components/sections/GallerySection'), {
-  loading: () => <div className="h-96 animate-pulse bg-gray-100 rounded-xl" />,
+  loading: () => <div className="min-h-[600px] animate-pulse bg-gray-100 rounded-xl w-full" />,
 });
 
 export const revalidate = 60; // Revalidate every 60 seconds
@@ -29,29 +29,56 @@ export default async function Home() {
 
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'EducationalOrganization',
-    name: 'Mabna Al Muhasibi',
-    url: 'https://al-muhasibi.vercel.app',
-    logo: 'https://nozwgjjkecyrpkpybrdf.supabase.co/storage/v1/object/public/assets/logo2.png',
-    sameAs: [
-      'https://www.instagram.com/mahad_alj/',
-      'https://www.facebook.com/mahadaljamiah.uinmalang'
+    '@graph': [
+      {
+        '@type': 'EducationalOrganization',
+        '@id': 'https://al-muhasibi.vercel.app/#organization',
+        name: 'Mabna Al Muhasibi',
+        alternateName: 'Al Muhasibi UIN Maliki Malang',
+        url: 'https://al-muhasibi.vercel.app',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://nozwgjjkecyrpkpybrdf.supabase.co/storage/v1/object/public/assets/logo2.png',
+          width: 200,
+          height: 200,
+        },
+        description: "Asrama putra mahasiswa UIN Maulana Malik Ibrahim Malang di bawah naungan Ma'had al-Jami'ah (MSAA).",
+        foundingDate: '2019',
+        sameAs: [
+          'https://www.instagram.com/mahad_alj/',
+          'https://www.facebook.com/mahadaljamiah.uinmalang',
+        ],
+        parentOrganization: {
+          '@type': 'EducationalOrganization',
+          name: 'UIN Maulana Malik Ibrahim Malang',
+          url: 'https://uin-malang.ac.id',
+        },
+        contactPoint: {
+          '@type': 'ContactPoint',
+          telephone: '+62-341-551354',
+          contactType: 'customer service',
+          areaServed: 'ID',
+          availableLanguage: 'Indonesian',
+        },
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: 'Jl. Gajayana No.50',
+          addressLocality: 'Malang',
+          addressRegion: 'Jawa Timur',
+          postalCode: '65144',
+          addressCountry: 'ID',
+        },
+      },
+      {
+        '@type': 'WebSite',
+        '@id': 'https://al-muhasibi.vercel.app/#website',
+        url: 'https://al-muhasibi.vercel.app',
+        name: 'Al Muhasibi',
+        description: 'Media Dakwah dan Dokumentasi Asrama Al Muhasibi UIN Maliki Malang',
+        publisher: { '@id': 'https://al-muhasibi.vercel.app/#organization' },
+        inLanguage: 'id-ID',
+      },
     ],
-    contactPoint: {
-      '@type': 'ContactPoint',
-      telephone: '+62-341-551354',
-      contactType: 'customer service',
-      areaServed: 'ID',
-      availableLanguage: 'Indonesian'
-    },
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: 'Jl. Gajayana No.50',
-      addressLocality: 'Malang',
-      addressRegion: 'Jawa Timur',
-      postalCode: '65144',
-      addressCountry: 'ID'
-    }
   };
 
   return (
@@ -60,6 +87,9 @@ export default async function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <h1 className="sr-only">
+        Al Muhasibi — Asrama Putra UIN Maulana Malik Ibrahim Malang
+      </h1>
       {/* Hero Section with Carousel */}
       <section className="relative min-h-[calc(100vh-80px)] flex items-center bg-[var(--background)]">
         {galleryItems && galleryItems.length > 0 ? (

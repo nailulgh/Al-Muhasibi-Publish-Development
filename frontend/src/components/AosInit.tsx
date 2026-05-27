@@ -10,9 +10,17 @@ export const AosInit = () => {
                 duration: 800,
                 once: true,
                 offset: 50,
+                easing: 'ease-out-cubic',
             })
         };
-        initAOS();
+        
+        if (typeof window !== 'undefined') {
+            if ('requestIdleCallback' in window) {
+                window.requestIdleCallback(initAOS, { timeout: 2000 })
+            } else {
+                setTimeout(initAOS, 200)
+            }
+        }
     }, [])
     return null
 }

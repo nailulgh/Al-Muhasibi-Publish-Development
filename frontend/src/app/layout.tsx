@@ -5,17 +5,21 @@ import "./globals.css";
 const montserrat = Montserrat({
   variable: "--font-heading",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const openSans = Open_Sans({
   variable: "--font-body",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const amiri = Amiri({
   variable: "--font-arabic",
   subsets: ["arabic"],
   weight: ["400", "700"],
+  display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -54,7 +58,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: './',
+    canonical: 'https://al-muhasibi.vercel.app',
   },
   openGraph: {
     title: "Al Muhasibi - Asrama UIN Maliki Malang",

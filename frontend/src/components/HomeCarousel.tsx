@@ -148,6 +148,9 @@ export default function HomeCarousel({ items }: { items: GalleryItem[] }) {
                                 fill
                                 className="object-cover"
                                 priority={index === 0}
+                                loading={index === 0 ? undefined : 'lazy'}
+                                quality={index === 0 ? 85 : 75}
+                                sizes="100vw"
                             />
 
                             {/* Gradient Overlay */}

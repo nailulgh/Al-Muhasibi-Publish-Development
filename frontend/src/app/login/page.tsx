@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 import LoginForm from './LoginForm'
 
 export const metadata: Metadata = {
-    title: 'Login Admin',
+    title: 'Login Admin | Al Muhasibi',
     description: 'Halaman login untuk pengelola Asrama Al Muhasibi.',
     robots: {
         index: false,

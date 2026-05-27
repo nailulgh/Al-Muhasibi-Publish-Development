@@ -11,10 +11,10 @@ import { fetchPengurus } from '@/lib/api/pengurus'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-    title: 'Profil Asrama',
-    description: 'Sejarah, Visi Misi, dan Struktur Kepengurusan Asrama Al Muhasibi.',
+    title: 'Profil Mabna Al Muhasibi UIN Maliki Malang',
+    description: 'Sejarah, visi misi, struktur kepengurusan, dan fasilitas Mabna Al Muhasibi — asrama putra UIN Maulana Malik Ibrahim Malang sejak 2019.',
     alternates: {
-        canonical: '/profile',
+        canonical: 'https://al-muhasibi.vercel.app/profile',
     },
 }
 
@@ -40,17 +40,39 @@ export default async function ProfilePage() {
         .order('created_at', { ascending: false })
         .limit(6)
 
+    const breadcrumbJsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+            {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Beranda',
+                item: 'https://al-muhasibi.vercel.app',
+            },
+            {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Profil Asrama',
+                item: 'https://al-muhasibi.vercel.app/profile',
+            },
+        ],
+    }
+
     return (
         <div className="flex flex-col gap-20 pb-20">
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
             {/* A. Hero Section */}
             <section className="relative h-[50vh] flex items-center justify-center text-white text-center">
                 <div className="absolute inset-0 bg-black z-0">
                     <Image
                         src="/assets/FotoGeneral/gedungMuhasibi.jpg"
-                        alt="Gedung Asrama Al Muhasibi"
+                        alt="Gedung Asrama Al Muhasibi UIN Maulana Malik Ibrahim Malang"
                         fill
                         className="object-cover opacity-40"
                         priority
+                        sizes="100vw"
+                        quality={85}
                     />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--accent-gold)]/20 to-transparent z-10"></div>

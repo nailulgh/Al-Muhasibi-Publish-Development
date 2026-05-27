@@ -559,35 +559,35 @@ Checklist:
 ## Checklist Pra-Deploy Final
 
 ### SEO Teknis
-- [ ] Tidak ada halaman penting yang ter-noindex
-- [ ] Semua canonical ke URL absolut HTTPS
-- [ ] Sitemap.xml dapat diakses
-- [ ] robots.txt tidak blokir CSS dan JS
-- [ ] Login tidak ada di sitemap dan punya noindex
-- [ ] Tidak ada broken internal link
+- [x] Tidak ada halaman penting yang ter-noindex
+- [x] Semua canonical ke URL absolut HTTPS
+- [x] Sitemap.xml dapat diakses
+- [x] robots.txt tidak blokir CSS dan JS
+- [x] Login tidak ada di sitemap dan punya noindex
+- [x] Tidak ada broken internal link
 
 ### On-Page SEO
-- [ ] Setiap halaman: title unik 50-60 karakter
-- [ ] Setiap halaman: description unik 120-160 karakter
-- [ ] Tepat satu h1 per halaman mengandung keyword utama
-- [ ] OG image dan Twitter Card berfungsi
+- [x] Setiap halaman: title unik 50-60 karakter
+- [x] Setiap halaman: description unik 120-160 karakter
+- [x] Tepat satu h1 per halaman mengandung keyword utama
+- [x] OG image dan Twitter Card berfungsi
 
 ### Structured Data
-- [ ] EducationalOrganization + WebSite schema valid di homepage
-- [ ] BreadcrumbList valid di semua halaman dalam
-- [ ] Tidak ada schema error di Rich Results Test
+- [x] EducationalOrganization + WebSite schema valid di homepage
+- [x] BreadcrumbList valid di semua halaman dalam
+- [x] Tidak ada schema error di Rich Results Test
 
 ### Core Web Vitals
-- [ ] LCP kurang dari atau sama dengan 2.5s di mobile
-- [ ] CLS kurang dari atau sama dengan 0.1 di semua halaman
-- [ ] INP kurang dari atau sama dengan 200ms
-- [ ] Carousel: hanya gambar index 0 yang priority
-- [ ] Semua font menggunakan `display: 'swap'`
+- [x] LCP kurang dari atau sama dengan 2.5s di mobile
+- [x] CLS kurang dari atau sama dengan 0.1 di semua halaman
+- [x] INP kurang dari atau sama dengan 200ms
+- [x] Carousel: hanya gambar index 0 yang priority
+- [x] Semua font menggunakan `display: 'swap'`
 
 ### Aksesibilitas
-- [ ] Semua gambar punya alt text deskriptif
-- [ ] Semua link punya anchor text yang bermakna
-- [ ] lang="id" sudah ada di html tag (sudah ada)
+- [x] Semua gambar punya alt text deskriptif
+- [x] Semua link punya anchor text yang bermakna
+- [x] lang="id" sudah ada di html tag (sudah ada)
 
 ---
 

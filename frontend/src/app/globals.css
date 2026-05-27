@@ -1,0 +1,158 @@
+@import "tailwindcss";
+
+@theme {
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+  --font-arabic: var(--font-arabic);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-border-color: var(--border-color);
+  --color-accent-olive: var(--accent-olive);
+  --color-accent-gold: var(--accent-gold);
+}
+
+:root {
+  /* Font Variables (will be set by Next.js font loader) */
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Open Sans', sans-serif;
+  --font-arabic: 'Amiri', serif;
+
+  /* Light Mode Colors */
+  --background: #999999;
+  --foreground: #a3a3a3;
+  --text-primary: #ffffff;
+  --text-secondary: #e0e0e0;
+  --border-color: #b8b8b8;
+  --accent-olive: #3d5a1e;
+  --accent-gold: #c48a1a;
+}
+
+.dark {
+  /* Dark Mode Colors */
+  --background: #18181b;
+  --foreground: #27272a;
+  --text-primary: #f4f4f5;
+  --text-secondary: #a1a1aa;
+  --border-color: #3f3f46;
+  --accent-olive: #a3b18a;
+  --accent-gold: #d4af37;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text-primary);
+  /* Default text color mapping */
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}
+
+.font-amiri {
+  font-family: var(--font-arabic);
+}
+
+/* Custom Utilities */
+.btn {
+  @apply inline-block font-bold py-3 px-6 rounded-lg text-center cursor-pointer no-underline border-2 border-transparent transition-all duration-300 relative overflow-hidden;
+  font-family: var(--font-heading);
+}
+
+.btn-primary {
+  background-color: var(--accent-gold);
+  color: #423512;
+  box-shadow: 0 4px 15px -5px rgba(212, 175, 55, 0.4);
+}
+
+.btn-primary:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 6px 20px -5px rgba(212, 175, 55, 0.6);
+  transform: translateY(-3px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  filter: brightness(1);
+  box-shadow: 0 4px 15px -5px rgba(212, 175, 55, 0.4);
+}
+
+/* Card Program Hover Effect */
+.card-program {
+  @apply relative overflow-hidden transition-all duration-300;
+}
+
+.card-program::before {
+  content: "";
+  @apply absolute inset-0 rounded-xl border-2 border-transparent opacity-0 transition-opacity duration-400 -z-10;
+  background: conic-gradient(from 180deg at 50% 50%, var(--accent-gold), var(--accent-olive), var(--accent-gold)) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.card-program:hover::before {
+  @apply opacity-100;
+}
+
+/* Modal Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Navigation Utilities */
+.nav-link {
+  @apply text-base font-medium text-[var(--text-secondary)] hover:text-[var(--accent-olive)] transition-colors relative;
+}
+
+.nav-link::after {
+  content: '';
+  @apply absolute left-0 bottom-[-4px] w-0 h-0.5 bg-[var(--accent-olive)] transition-all duration-300;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  @apply w-full;
+}
+
+.nav-link.active {
+  @apply text-[var(--accent-olive)] font-bold;
+}
+
+.nav-link-mobile {
+  @apply block px-3 py-2 rounded-md text-base font-medium text-[var(--text-secondary)] hover:text-[var(--accent-olive)] hover:bg-[var(--border-color)] transition-colors;
+}
+
+.nav-link-mobile.active {
+  @apply text-[var(--accent-olive)] bg-[var(--border-color)] font-bold;
+}

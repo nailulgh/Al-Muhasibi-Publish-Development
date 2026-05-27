@@ -1,0 +1,363 @@
+/* 1. PENGATURAN FONT & VARIABEL TEMA */
+:root {
+  /* Jenis Font */
+  --font-heading: "Montserrat", sans-serif;
+  --font-body: "Open Sans", sans-serif;
+  --font-arabic: "Amiri", serif;
+  /* Warna Tema Terang (Light Mode) */
+  --background: #999999;
+  /* Latar abu-abu sesuai keinginan Anda */
+  --foreground: #a3a3a3;
+  /* Latar kartu/konten, sedikit lebih terang dari background */
+
+  /* PERUBAHAN KUNCI: Teks diubah menjadi putih agar kontras */
+  --text-primary: #ffffff;
+  /* Teks utama menjadi putih */
+  --text-secondary: #e0e0e0;
+  /* Teks sekunder menjadi putih keabuan */
+
+  --border-color: #b8b8b8;
+  /* Border yang terlihat di atas latar abu-abu */
+
+  /* Aksen warna tetap sama, masih terlihat bagus di atas abu-abu */
+  --accent-olive: #556b2f;
+  /* Aksen hijau zaitun asli */
+  --accent-gold: #d6a354;
+  /* Aksen emas lembut asli */
+}
+
+html.dark {
+  --background: #18181b;
+  /* Latar utama gelap */
+  --foreground: #27272a;
+  /* Latar sekunder/kartu */
+  --border-color: #3f3f46;
+  /* Border di mode gelap */
+  --text-primary: #f4f4f5;
+  /* Teks utama putih keabuan */
+  --text-secondary: #a1a1aa;
+  /* Teks sekunder abu-abu terang */
+  --accent-olive: #a3b18a;
+  /* Aksen hijau zaitun terang */
+  --accent-gold: #d4af37;
+  /* Aksen emas lembut terang */
+}
+
+/* 2. GAYA DASAR */
+body {
+  font-family: var(--font-body);
+  background-color: var(--background);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}
+
+.font-amiri {
+  font-family: var(--font-arabic);
+}
+
+/* 3. GAYA NAVIGASI */
+.nav-link {
+  position: relative;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+
+  /* PERUBAHAN DI SINI: Ukuran font diperbesar agar mudah dibaca */
+  font-size: 1.1rem;
+  /* Diubah dari 0.875rem (14px) menjadi 1rem (16px) */
+
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: var(--text-primary);
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent-gold);
+  transition: width 0.3s;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link.active {
+  color: var(--accent-olive);
+  font-weight: 600;
+}
+
+.nav-link-mobile {
+  display: block;
+  padding: 0.75rem 1rem;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.nav-link-mobile:hover {
+  background-color: var(--border-color);
+}
+
+.nav-link-mobile.active {
+  background-color: var(--border-color);
+  font-weight: 600;
+}
+
+/* 4. GAYA TOMBOL MODERN & DINAMIS */
+.btn {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  border: 2px solid transparent;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background-color: var(--accent-gold);
+  color: #423512;
+  box-shadow: 0 4px 15px -5px rgba(212, 175, 55, 0.4);
+}
+
+.btn-primary:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 6px 20px -5px rgba(212, 175, 55, 0.6);
+  transform: translateY(-3px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  filter: brightness(1);
+  box-shadow: 0 4px 15px -5px rgba(212, 175, 55, 0.4);
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.6);
+  transform: scale(0);
+  animation: ripple-effect 0.6s linear;
+}
+
+@keyframes ripple-effect {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.card-program {
+  position: relative;
+  /* Diperlukan untuk posisi pseudo-element */
+  overflow: hidden;
+  /* Menyembunyikan gradasi yang keluar dari border */
+}
+
+/* Membuat lapisan gradasi di belakang card, awalnya tidak terlihat */
+.card-program::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  /* Mengikuti lengkungan card */
+  border: 2px solid transparent;
+  background: conic-gradient(from 180deg at 50% 50%,
+      var(--accent-gold),
+      var(--accent-olive),
+      var(--accent-gold)) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+/* Saat cursor menyentuh card */
+.card-program:hover::before {
+  opacity: 1;
+  /* Tampilkan gradasi border */
+}
+
+/* Ikon di dalam card awalnya menggunakan warna olive */
+.card-program .feather {
+  color: var(--accent-olive);
+  transition: color 0.4s ease-in-out;
+}
+
+/* Saat cursor menyentuh card, ubah warna ikon menjadi emas */
+.card-program:hover .feather {
+  color: var(--accent-gold);
+}
+
+#pengurus-tambahan {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.7s ease-in-out;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+  /* Membuat modal bisa diklik saat aktif */
+}
+
+.modal-overlay.active .modal-container {
+  transform: scale(1);
+  /* Mengembalikan ukuran modal ke normal saat aktif */
+}
+
+/* --- FOOTER SPECIFIC STYLES --- */
+
+/* Wrapper Footer */
+footer#kontak {
+  /* Menggunakan variabel background Anda (#999999) agar menyatu dengan halaman atas */
+  background-color: var(--background);
+  color: #ffffff;
+  /* Teks Putih agar kontras dengan abu-abu */
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  /* Garis pemisah sangat halus di atas */
+  font-family: var(--font-body);
+}
+
+/* Judul Kolom (Menu Cepat, Kontak Kami, Terhubung) */
+.footer-heading {
+  color: #ffffff;
+  /* Putih bersih sesuai foto */
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Link Navigasi */
+.footer-link {
+  color: #f0f0f0;
+  /* Putih sedikit redup agar tidak menyakitkan mata */
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: block;
+}
+
+.footer-link:hover {
+  color: var(--accent-olive);
+  /* Hijau saat di-hover (Interaksi) */
+  padding-left: 5px;
+}
+
+/* Ikon Kontak (Peta, Telepon, Email) */
+.contact-icon {
+  color: var(--accent-olive);
+  /* HIJAU ZAITUN (#556b2f) sesuai foto */
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+  /* Penyesuaian agar sejajar dengan teks */
+}
+
+/* Teks Kontak */
+.contact-text {
+  color: #f0f0f0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.contact-text a {
+  color: #f0f0f0;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.contact-text a:hover {
+  color: var(--accent-olive);
+  text-decoration: underline;
+}
+
+/* Peta (Maps) - Dibuat Grayscale agar menyatu dengan Abu-abu */
+.map-frame {
+  width: 100%;
+  height: 180px;
+  background-color: #888;
+  border-radius: 8px;
+  overflow: hidden;
+  /* Efek Grayscale agar peta tidak warna-warni sendiri (bertabrakan) */
+  filter: grayscale(100%);
+  transition: filter 0.5s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.map-frame:hover {
+  filter: grayscale(0%);
+  /* Berwarna saat mouse diarahkan */
+}
+
+/* Tombol Sosial Media (Lingkaran Outline Putih) */
+.social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  /* Garis putih transparan */
+  color: #ffffff;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+.social-btn:hover {
+  background-color: var(--accent-olive);
+  /* Background jadi hijau saat hover */
+  border-color: var(--accent-olive);
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* Bagian Copyright (Garis atas tipis) */
+.copyright-section {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  /* Garis pemisah putih transparan */
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  color: #e0e0e0;
+}
+
+.dev-link {
+  color: var(--accent-olive);
+  /* Nama Developer Hijau */
+  font-weight: 600;
+  text-decoration: none;
+}

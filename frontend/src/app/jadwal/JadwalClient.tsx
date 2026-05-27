@@ -123,8 +123,8 @@ export default function JadwalClient({ initialData }: { initialData: Jadwal[] })
                             {viewMode === "tabel" ? (
                                 <>
                                     {/* Desktop/Tablet: Table */}
-                                    <div className="hidden md:block bg-[var(--foreground)] rounded-2xl overflow-hidden border border-[var(--border-color)] min-h-[300px]">
-                                        <table className="w-full text-left">
+                                    <div className="hidden md:block bg-[var(--foreground)] rounded-2xl overflow-x-auto border border-[var(--border-color)] min-h-[300px]">
+                                        <table className="w-full min-w-[750px] text-left">
                                             <thead className="bg-black/5 dark:bg-white/5">
                                                 <tr>
                                                     <th className="p-4 font-semibold">Hari</th>

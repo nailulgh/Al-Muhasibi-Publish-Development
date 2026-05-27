@@ -44,13 +44,6 @@ export function Header({ user }: HeaderProps) {
         { name: "Kontak", href: "#kontak" },
     ]
 
-    const adminLinks = [
-        { name: "Dashboard", href: "/admin" },
-        { name: "Manajemen Jadwal", href: "/admin/schedules" },
-        { name: "Manajemen Galeri", href: "/admin/gallery" },
-        { name: "Profil Admin", href: "/admin/profile" },
-    ]
-
     return (
         <header className="bg-[var(--foreground)]/80 backdrop-blur-lg sticky top-0 z-50 border-b border-[var(--border-color)] transition-colors duration-300">
             <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -109,7 +102,7 @@ export function Header({ user }: HeaderProps) {
                 <div className="md:hidden bg-[var(--foreground)] border-t border-[var(--border-color)] max-h-[calc(100vh-80px)] overflow-y-auto">
                     <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                         <div className="px-3 py-2 text-xs font-bold text-[var(--text-secondary)] uppercase tracking-wider">
-                            Menu Publik
+                            Menu 
                         </div>
                         {navLinks.map((link) => (
                             <Link
@@ -123,26 +116,6 @@ export function Header({ user }: HeaderProps) {
                                 {link.name}
                             </Link>
                         ))}
-
-                        {user && (
-                            <>
-                                <div className="mt-4 px-3 py-2 text-xs font-bold text-[var(--text-secondary)] uppercase tracking-wider border-t border-[var(--border-color)] pt-4">
-                                    Admin Panel
-                                </div>
-                                {adminLinks.map((link) => (
-                                    <Link
-                                        key={link.name}
-                                        href={link.href}
-                                        className={`nav-link-mobile block px-3 py-2 rounded-md text-base font-medium ${isActive(link.href)
-                                            ? "text-[var(--accent-olive)] bg-[var(--accent-olive)]/10"
-                                            : "text-[var(--text-secondary)] hover:text-[var(--accent-olive)] hover:bg-[var(--accent-olive)]/5"
-                                            }`}
-                                    >
-                                        {link.name}
-                                    </Link>
-                                ))}
-                            </>
-                        )}
                     </div>
                 </div>
             )}

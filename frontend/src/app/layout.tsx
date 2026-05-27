@@ -84,7 +84,10 @@ export const metadata: Metadata = {
     images: ['https://nozwgjjkecyrpkpybrdf.supabase.co/storage/v1/object/public/profile-images/MusyMuhasibi-1.png'],
   },
   verification: {
-    google: "WzXGSX4LUMflTHkk811Ln77zyPGSlxoe_c9t1MHYQBo",
+    google: [
+      "WzXGSX4LUMflTHkk811Ln77zyPGSlxoe_c9t1MHYQBo",
+      "jHjrlbXMgkR_mXm0bXqTBAbvF_9PWArh9vdThalELpc"
+    ],
   },
 };
 
